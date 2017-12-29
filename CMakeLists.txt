@@ -21,7 +21,11 @@ find_package(catkin REQUIRED COMPONENTS
   roslint
 )
 
-find_package(Eigen3 REQUIRED)
+#find_package(Eigen3 REQUIRED)
+# required to find 'Eigen' in indigo
+find_package(cmake_modules REQUIRED)
+find_package(Eigen REQUIRED)
+
 find_package(Boost REQUIRED system)
 
 # Catkin
@@ -41,8 +45,11 @@ catkin_package(
 )
 
 ## Build
+#include_directories(SYSTEM
+#  ${EIGEN3_INCLUDE_DIRS}
+#)
 include_directories(SYSTEM
-  ${EIGEN3_INCLUDE_DIRS}
+  ${EIGEN_INCLUDE_DIRS}
 )
 
 include_directories(
